@@ -112,3 +112,4 @@ reset_gcs_files:
 	-gsutil mb -p ${GCP_PROJECT} -l ${GCP_REGION} gs://${BUCKET_NAME}
 
 reset_all_files: reset_local_files reset_bq_files reset_gcs_files
+
