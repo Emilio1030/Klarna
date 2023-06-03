@@ -133,7 +133,7 @@ def train(split_ratio: float = 0.30) -> float:
     # $CHA_BEGIN
     model = load_model()
     if model is None:
-        ipdb.set_trace()
+        # ipdb.set_trace()
         model = initialize_model()
     # model = compile_model(model, learning_rate=learning_rate)
     model = train_model(model, X_train_processed, y_train)
