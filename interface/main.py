@@ -145,14 +145,20 @@ def train(split_ratio: float = 0.30) -> float:
     # Retrieve the best estimator from the model
     # model.best_estimator_
 
-   # Retrieve the best estimators from the model
-    best_estimators = [est for est in model.estimators_]
-
-    # Perform cross-validation for each base estimator
-    cv_scores = []
-    for estimator in best_estimators:
-        scores = cross_val_score(estimator, X_train_processed, y_train, cv=5, scoring='neg_log_loss')
+    # Retrieve the best estimators from the model
+    #ipdb.set_trace()
+    if load_model() is None:
+        best_estimators = model.best_estimator_
+        cv_scores = []
+        scores = cross_val_score(best_estimators, X_train_processed, y_train, cv=5, scoring='neg_log_loss')
         cv_scores.append(-np.mean(scores))
+    else:
+        best_estimators = [est for est in model.estimators_]
+        # Perform cross-validation for each base estimator
+        cv_scores = []
+        for estimator in best_estimators:
+            scores = cross_val_score(estimator, X_train_processed, y_train, cv=5, scoring='neg_log_loss')
+            cv_scores.append(-np.mean(scores))
 
     # Print the mean and standard deviation of the cross-validation scores
     print('Cross-Validation Log Loss:')
@@ -285,6 +291,6 @@ def pred(X_pred: pd.DataFrame = None) -> np.ndarray:
 
 if __name__ == '__main__':
     # preprocess()
-    train()
-    # evaluate()
-    # pred()
+    # train()
+    evaluate()
+    pred()
