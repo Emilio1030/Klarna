@@ -119,13 +119,20 @@ def load_model(stage="Production") -> keras.Model:
 
         from google.cloud import storage
         client = storage.Client()
+
         blobs = list(client.get_bucket(BUCKET_NAME).list_blobs(prefix="model"))
-        ipdb.set_trace()
+        # bucket = client.bucket(BUCKET_NAME)
+        # blobs = bucket.blob("model_20230522-132128.joblib")
+        #blobs = client.get_bucket(BUCKET_NAME).get_blob("model_20230522-132128.joblib")
+        # ipdb.set_trace()
+
         try:
             latest_blob = max(blobs, key=lambda x: x.updated)
             latest_model_path_to_save = os.path.join(LOCAL_REGISTRY_PATH, latest_blob.name)
             latest_blob.download_to_filename(latest_model_path_to_save)
-            latest_model = keras.models.load_model(latest_model_path_to_save)
+            # latest_model = keras.models.load_model(latest_model_path_to_save)
+            latest_model = joblib.load(latest_model_path_to_save)
+            # ipdb.set_trace()
             print("✅ Latest model downloaded from cloud storage")
             return latest_model
         except:
