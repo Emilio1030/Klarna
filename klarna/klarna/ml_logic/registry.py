@@ -120,7 +120,6 @@ def load_model(stage="Production") -> keras.Model:
         from google.cloud import storage
         client = storage.Client()
         blobs = list(client.get_bucket(BUCKET_NAME).list_blobs(prefix="model"))
-        ipdb.set_trace()
         try:
             latest_blob = max(blobs, key=lambda x: x.updated)
             latest_model_path_to_save = os.path.join(LOCAL_REGISTRY_PATH, latest_blob.name)
