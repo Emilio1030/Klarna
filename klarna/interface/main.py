@@ -126,7 +126,7 @@ def train(split_ratio: float = 0.30) -> float:
     y_train = data_processed_train[:, -1]
     X_val_processed = data_processed_val[:, :-1]
     y_val = data_processed_val[:, -1]
-
+    ipdb.set_trace()
     # $CHA_END
 
     # Train model using `model.py`
@@ -290,7 +290,7 @@ def pred(X_pred: pd.DataFrame = None) -> np.ndarray:
 
 
 if __name__ == '__main__':
-    # preprocess()
+    #preprocess()
     train()
-    evaluate()
-    pred()
+    #evaluate()
+    #pred()
