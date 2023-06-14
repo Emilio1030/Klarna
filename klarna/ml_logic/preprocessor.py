@@ -4,7 +4,7 @@ from sklearn.compose import ColumnTransformer, make_column_transformer, make_col
 from sklearn.impute import SimpleImputer, KNNImputer
 from sklearn.preprocessing import RobustScaler, OneHotEncoder, OrdinalEncoder
 from sklearn.feature_selection import SelectPercentile, mutual_info_regression, chi2
-
+import ipdb
 
 # from klarna.ml_logic.encoders import (transform_time_features,
 #                                               transform_lonlat_features,
@@ -35,7 +35,7 @@ def preprocess_features(X: pd.DataFrame, y: pd.DataFrame) -> np.ndarray:
                      "status_last_archived_0_24m", "status_2nd_last_archived_0_24m","status_3rd_last_archived_0_24m",
                      "status_max_archived_0_6_months","status_max_archived_0_12_months","status_max_archived_0_24_months",
                      "has_paid"]
-
+        #ipdb.set_trace()
         _ = [X.__setitem__(feature, X[feature].astype("object")) for feature in list_float_to_obj]
 
 
