@@ -11,6 +11,7 @@ pandas==1.5.3
 scipy==1.10.0
 scikit-learn==1.2.1
 xgboost
+joblib==1.2.0
 
 # tests/linter
 black
@@ -58,6 +59,9 @@ tensorflow==2.10.0; sys_platform == 'darwin' and 'ARM' not in platform_version #
 tensorflow==2.10.0; sys_platform != 'darwin' # Windows & Ubuntu Intel chips
 
 # prevent bq 3+ db-dtypes package error when running training from bq
+
+psycopg2-binary
+python-dotenv
 
 # API
 fastapi
