@@ -3,7 +3,7 @@ import os
 import time
 import pickle
 from colorama import Fore, Style
-from tensorflow import keras
+# from tensorflow import keras
 from klarna.params import *
 import ipdb
 from sklearn.ensemble import GradientBoostingClassifier
@@ -38,7 +38,7 @@ def save_results(params: dict, metrics: dict) -> None:
     print("✅ Results saved locally")
 
 
-def save_model(model: keras.Model = None) -> None:
+def save_model(model: None) -> None:
     """
     Persist trained model locally on hard drive at f"{LOCAL_REGISTRY_PATH}/models/{timestamp}.h5"
     - if MODEL_TARGET='gcs', also persist it on your bucket on GCS at "models/{timestamp}.h5" --> unit 02 only
@@ -72,7 +72,8 @@ def save_model(model: keras.Model = None) -> None:
     return None
 
 
-def load_model(stage="Production") -> keras.Model:
+def load_model(stage="Production"):
+    #ipdb.set_trace()
     """
     Return a saved model:
     - locally (latest one in alphabetical order)

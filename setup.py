@@ -13,5 +13,4 @@ setup(name='klarna',
       test_suite='tests',
       # include_package_data: to install data from MANIFEST.in
       include_package_data=True,
-      scripts=['scripts/klarna-run'],
       zip_safe=False)
